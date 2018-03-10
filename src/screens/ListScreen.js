@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { SafeAreaView, FlatList, Text } from 'react-native';
+import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 
-import data from '../datas/LibraryList.json';
+import LibraryList from '../components/LibraryList';
 
 class ListScreen extends Component {
   static navigationOptions = {
@@ -21,10 +21,9 @@ class ListScreen extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <FlatList
-          data={data}
-          renderItem={({item}) => <Text>{item.title}</Text>}
-        />
+        <ScrollView>
+          <LibraryList />
+        </ScrollView>
       </SafeAreaView>
     );
   }
