@@ -1,18 +1,37 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { Component } from 'react';
+import { SafeAreaView, FlatList, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
-class ListScreen extends React.Component {
+import data from '../datas/LibraryList.json';
+
+class ListScreen extends Component {
+  static navigationOptions = {
+    title: 'React-Native',
+    headerStyle: {
+      backgroundColor: 'teal',
+    },
+    headerTintColor: 'white',
+    headerTitleStyle: {
+      fontSize: 20,
+      fontWeight: 'bold',
+      color: 'white'
+    }
+  }
+
   render() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Detail')}
+      <SafeAreaView style={{ flex: 1 }}>
+        <FlatList
+          data={data}
+          renderItem={({item}) => <Text>{item.title}</Text>}
         />
-      </View>
+      </SafeAreaView>
     );
   }
+}
+
+ListScreen.propTypes = {
+  navigation: PropTypes.object
 }
 
 export { ListScreen };
