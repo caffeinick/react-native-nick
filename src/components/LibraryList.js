@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import { FlatList, Text } from 'react-native';
 
 import data from '../datas/libraries.json'
-// import LibraryItem from './LibraryItem';
+import LibraryItem from './LibraryItem';
 
 class LibraryList extends Component {
   state = {
-    libraries: data
+    libraries: data,
+  }
+
+  renderItemFunc = ({item}) => {
+    return (
+      <LibraryItem
+        item={item}
+      />
+    );
   }
 
   render() {
@@ -14,7 +22,9 @@ class LibraryList extends Component {
     return (
       <FlatList
         data={libraries}
-        renderItem={({item}) => <Text>{item.title}</Text>}
+        extraData={this.state}
+        renderItem={this.renderItemFunc}
+        keyExtractor={(item, index) => index.toString()}
       />
     );
   }
