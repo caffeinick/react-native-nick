@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { Card } from '../components/common'
+import Card from '../components/common/Card'
 import LibraryList from '../components/LibraryList';
 
 class ListScreen extends Component {
@@ -36,4 +36,4 @@ ListScreen.propTypes = {
   navigation: PropTypes.object
 }
 
-export { ListScreen };
+export default ListScreen;

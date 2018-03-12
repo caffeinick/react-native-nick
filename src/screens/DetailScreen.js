@@ -38,4 +38,4 @@ const styles = {
   }
 }
 
-export { DetailScreen };
+export default DetailScreen;

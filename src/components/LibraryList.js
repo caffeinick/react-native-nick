@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 
 import data from '../datas/libraries.json'
-import { CardSection } from './common'
+import CardSection from './common/CardSection'
 import LibraryItem from './LibraryItem';
 
 class LibraryList extends Component {
@@ -27,7 +27,7 @@ class LibraryList extends Component {
         data={libraries}
         extraData={this.state}
         renderItem={this.renderItemFunc}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={item => `${item.id}`}
       />
     );
   }
