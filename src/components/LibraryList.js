@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { FlatList, Text } from 'react-native';
+import { FlatList } from 'react-native';
 
 import data from '../datas/libraries.json'
+import { CardSection } from './common'
 import LibraryItem from './LibraryItem';
 
 class LibraryList extends Component {
@@ -11,9 +12,11 @@ class LibraryList extends Component {
 
   renderItemFunc = ({item}) => {
     return (
-      <LibraryItem
-        item={item}
-      />
+      <CardSection>
+        <LibraryItem
+          item={item}
+        />
+      </CardSection>
     );
   }
 

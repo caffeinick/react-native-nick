@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { SafeAreaView, ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { Card } from '../components/common'
 import LibraryList from '../components/LibraryList';
 
 class ListScreen extends Component {
   static navigationOptions = {
-    title: 'React-Native',
+    title: 'Libraries',
     headerStyle: {
       backgroundColor: 'teal',
     },
@@ -22,7 +23,9 @@ class ListScreen extends Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
-          <LibraryList />
+          <Card>
+            <LibraryList />
+          </Card>
         </ScrollView>
       </SafeAreaView>
     );
