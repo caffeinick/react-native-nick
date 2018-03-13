@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 
 import ListScreen from '../screens/ListScreen';
-import DetailScreen from '../screens/DetailScreen'
+import DetailScreen from '../screens/DetailScreen';
 
 const routeConfig = {
   Home: {
@@ -16,6 +16,6 @@ const navigationConfig = {
   initialRouteName: 'Home',
 };
 
-const AppNavigator = StackNavigator(routeConfig, navigationConfig);
+const LibraryNavigator = StackNavigator(routeConfig, navigationConfig);
 
-export default AppNavigator;
+export default LibraryNavigator;
