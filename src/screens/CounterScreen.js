@@ -9,65 +9,93 @@ class CounterScreen extends Component {
     this.state = { count: 0 }
   }
 
-  onPress = () => {
+  onPlus = () => {
     this.setState({
       count: this.state.count+1
     })
-  }
+  };
+
+  onMinus = () => {
+    this.setState({
+      count: this.state.count-1
+    })
+  };
   
   render() {
     const { 
-      containerStyle, 
+      centerContainer,
+      buttonContainerStyle, 
       buttonStyle, 
       innerTextStyle,
       counterContainerStyle, 
       counterStyle
     } = styles;
+    
     return (
       <View style={{flex: 1}}>
         <Header
           headerText={`hello`}
         />
-        <View style={containerStyle}>
-          <TouchableOpacity
-            style={buttonStyle}
-            onPress={this.onPress}
-          >
-            <Text style={innerTextStyle}>
-              Touch Here!
-            </Text>
-          </TouchableOpacity>
+        <View style={centerContainer}>
           <View style={counterContainerStyle}>
-            <Text style={counterStyle}>{this.state.count}</Text>
+            <Text style={counterStyle}>
+              {this.state.count}
+            </Text>
+          </View>
+          <View style={buttonContainerStyle}>
+            <TouchableOpacity
+              style={buttonStyle}
+              onPress={this.onMinus}
+            >
+              <Text style={innerTextStyle}>
+                -
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={buttonStyle}
+              onPress={this.onPlus}
+            >
+              <Text style={innerTextStyle}>
+                +
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
+        
       </View>
-    )
+    );
   }
 }
 
 const styles = {
-  containerStyle: {
+  centerContainer: {
     flex: 1,
     justifyContent: 'center',
     marginHorizontal: 10
   },
+  buttonContainerStyle: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
   buttonStyle: {
     alignItems: 'center',
     backgroundColor: '#DDDDDD',
-    padding: 10
+    width: 50,
+    padding: 10,
+    margin: 10
   },
   innerTextStyle: {
-    fontSize: 20,
+    fontSize: 40,
     fontWeight: 'bold'
   },
   counterContainerStyle: {
+    justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 10
   },
   counterStyle: {
     color: 'teal',
-    fontSize: 30,
+    fontSize: 60,
     fontWeight: 'bold'
   }
 };
