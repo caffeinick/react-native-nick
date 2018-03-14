@@ -1,22 +1,11 @@
 import React, { Component } from 'react';
-import { SafeAreaView, View, TouchableOpacity, Text } from 'react-native';
-import { withNavigation } from 'react-navigation';
-import PropTypes from 'prop-types';
+import { View, TouchableOpacity, Text } from 'react-native';
 
-class CounterScreen extends Component {
+class ReduxCounterScreen extends Component {
   static navigationOptions = {
-    title: 'Counter',
-    headerStyle: {
-      backgroundColor: 'teal',
-    },
-    headerTintColor: 'white',
-    headerTitleStyle: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      color: 'white'
-    }
+    title: 'ReduxCounter'
   }
-  
+
   constructor(props) {
     super(props)
     this.state = { count: 0 }
@@ -41,20 +30,17 @@ class CounterScreen extends Component {
       buttonStyle, 
       innerTextStyle,
       counterContainerStyle, 
-      counterStyle,
-      goReduxContainerStyle,
-      goReduxTextStyle
+      counterStyle
     } = styles;
     
     return (
-      <SafeAreaView style={{flex: 1}}>
+      <View style={{flex: 1}}>
         <View style={centerContainer}>
           <View style={counterContainerStyle}>
             <Text style={counterStyle}>
               {this.state.count}
             </Text>
           </View>
-
           <View style={buttonContainerStyle}>
             <TouchableOpacity
               style={buttonStyle}
@@ -73,24 +59,11 @@ class CounterScreen extends Component {
               </Text>
             </TouchableOpacity>
           </View>
-          
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate('Redux')}
-          >
-            <View style={goReduxContainerStyle}>
-              <Text style={goReduxTextStyle}>
-                Go Redux Counter &rarr;
-              </Text>
-            </View>
-          </TouchableOpacity>
         </View>
-      </SafeAreaView>
+        
+      </View>
     );
   }
-}
-
-CounterScreen.propTypes = {
-  navigation: PropTypes.object
 }
 
 const styles = {
@@ -123,17 +96,8 @@ const styles = {
     color: 'teal',
     fontSize: 60,
     fontWeight: 'bold'
-  },
-  goReduxContainerStyle: {
-    alignItems: 'center',
-    marginTop: 100
-  },
-  goReduxTextStyle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: 'teal'
   }
 };
 
 
-export default withNavigation(CounterScreen);
+export default ReduxCounterScreen;
