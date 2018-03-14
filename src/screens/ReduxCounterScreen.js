@@ -1,26 +1,13 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
+import * as actions from '../actions';
 
 class ReduxCounterScreen extends Component {
   static navigationOptions = {
     title: 'ReduxCounter'
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = { count: 0 }
-  }
-
-  onPlus = () => {
-    this.setState({
-      count: this.state.count+1
-    })
-  };
-
-  onMinus = () => {
-    this.setState({
-      count: this.state.count-1
-    })
   };
   
   render() {
@@ -32,19 +19,20 @@ class ReduxCounterScreen extends Component {
       counterContainerStyle, 
       counterStyle
     } = styles;
+    const { number, decrement, increment } = this.props;
     
     return (
       <View style={{flex: 1}}>
         <View style={centerContainer}>
           <View style={counterContainerStyle}>
             <Text style={counterStyle}>
-              {this.state.count}
+              {number}
             </Text>
           </View>
           <View style={buttonContainerStyle}>
             <TouchableOpacity
               style={buttonStyle}
-              onPress={this.onMinus}
+              onPress={() => decrement()}
             >
               <Text style={innerTextStyle}>
                 -
@@ -52,7 +40,7 @@ class ReduxCounterScreen extends Component {
             </TouchableOpacity>
             <TouchableOpacity
               style={buttonStyle}
-              onPress={this.onPlus}
+              onPress={() => increment()}
             >
               <Text style={innerTextStyle}>
                 +
@@ -99,5 +87,14 @@ const styles = {
   }
 };
 
+ReduxCounterScreen.propTypes = {
+  number: PropTypes.number,
+  increment: PropTypes.func,
+  decrement: PropTypes.func
+}
 
-export default ReduxCounterScreen;
+const mapStateToProps = state => {
+  return { number: state.number }
+};
+
+export default connect(mapStateToProps, actions)(ReduxCounterScreen);

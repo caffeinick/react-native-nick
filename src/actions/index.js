@@ -1,5 +1,5 @@
-export const increment = (diff) => (
-  { type: `INCREMENT`, diff: diff }
+export const increment = () => (
+  { type: `INCREMENT` }
 );
 
 export const decrement = () => (

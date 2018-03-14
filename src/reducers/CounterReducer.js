@@ -1,19 +1,11 @@
-const initialState = {
-  number: 0
-};
+const initialState = 0;
 
 const CounterReducer = (state = initialState, action) => {
-  console.log(action);
-
   switch(action.type) {
     case `INCREMENT`:
-      return {
-        number: state.number + action.diff
-      };
+      return state + 1
     case `DECREMENT`:
-      return {
-        number: state.number - 1
-      };
+      return state - 1
     default:
       return state;
   }
